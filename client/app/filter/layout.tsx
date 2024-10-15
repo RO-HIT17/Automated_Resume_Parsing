@@ -17,16 +17,16 @@ export const viewport: Viewport = {
 };
 
 
-export default function AboutLayout({
+export default function FilterLayout({
     children,
   }: {
     children: React.ReactNode;
   }) {
     return (
       <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-      <div >
+      <div className="relative flex flex-col h-screen">
         <Navbar />
-        <main >
+        <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow mb-8">
           {children}
         </main>
       </div>
