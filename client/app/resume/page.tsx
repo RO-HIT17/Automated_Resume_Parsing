@@ -1,46 +1,46 @@
-"use client"
+"use client";
 
-import { Button } from "@nextui-org/react"
-import { Textarea } from "@nextui-org/react"
-import { Tooltip } from "@nextui-org/react"
-import { Skeleton } from "@nextui-org/react"
-import { PaperClipIcon } from "@heroicons/react/24/outline" // Import PaperClip icon
-import { useRef, useState } from "react"
-import { title } from "@/components/primitives"
+import { Button } from "@nextui-org/react";
+import { Textarea } from "@nextui-org/react";
+import { Tooltip } from "@nextui-org/react";
+import { Skeleton } from "@nextui-org/react";
+import { PaperClipIcon } from "@heroicons/react/24/outline"; // Import PaperClip icon
+import { useRef, useState } from "react";
+import { title } from "@/components/primitives";
 
 export default function Component() {
-  const fileInputRef = useRef(null)
-  const [userInput, setUserInput] = useState("")
-  const [uploadedFile, setUploadedFile] = useState(null)
-  const [submittedInput, setSubmittedInput] = useState(null)
-  const [isLoading, setIsLoading] = useState(false)
-  const [response, setResponse] = useState(null)
-  const [showInstructions, setShowInstructions] = useState(true) // State for showing the instructions
+  const fileInputRef = useRef(null);
+  const [userInput, setUserInput] = useState("");
+  const [uploadedFile, setUploadedFile] = useState(null);
+  const [submittedInput, setSubmittedInput] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [response, setResponse] = useState(null);
+  const [showInstructions, setShowInstructions] = useState(true); // State for showing the instructions
 
   const handleFileUpload = (e) => {
-    const file = e.target.files[0]
+    const file = e.target.files[0];
     if (file) {
-      setUploadedFile(file.name)
+      setUploadedFile(file.name);
     }
-  }
+  };
 
   const handleInputChange = (e) => {
-    setUserInput(e.target.value)
-  }
+    setUserInput(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setShowInstructions(false) // Hide the instructions after submission
-    setSubmittedInput(userInput)
-    setUserInput("")
-    setResponse(null)
-    setIsLoading(true)
+    e.preventDefault();
+    setShowInstructions(false); // Hide the instructions after submission
+    setSubmittedInput(userInput);
+    setUserInput("");
+    setResponse(null);
+    setIsLoading(true);
 
     setTimeout(() => {
-      setIsLoading(false)
-      setResponse(`Parsed data from your resume: ${userInput}`)
-    }, 2000)
-  }
+      setIsLoading(false);
+      setResponse(`Parsed data from your resume: ${userInput}`);
+    }, 2000);
+  };
 
   return (
     <div className="flex flex-col h-screen justify-between">
@@ -48,7 +48,8 @@ export default function Component() {
       {showInstructions && (
         <div className="flex-grow flex items-center justify-center">
           <div className="inline-block max-w-xl text-center mb-4">
-            <span className={title()}>How to use the
+            <span className={title()}>
+              How to use the
               <span className={title({ color: "green" })}> Resume Parser</span>?
             </span>
             <br />
@@ -97,11 +98,7 @@ export default function Component() {
             className="hidden"
             onChange={handleFileUpload}
           />
-          {uploadedFile && (
-            <div>
-              📄 {uploadedFile}
-            </div>
-          )}
+          {uploadedFile && <div>📄 {uploadedFile}</div>}
           <Tooltip content="Attach File">
             <Button
               variant="light"
@@ -118,5 +115,5 @@ export default function Component() {
         </div>
       </form>
     </div>
-  )
+  );
 }
